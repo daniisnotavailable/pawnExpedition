@@ -263,7 +263,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"iddle",
-"speed": 7.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -286,12 +286,12 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk",
-"speed": 10.0
+"speed": 7.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e6rub"]
 radius = 4.0
-height = 12.0
+height = 14.0
 
 [node name="JugadorPeon" unique_id=723390112 instance=ExtResource("1_nmuud")]
 
@@ -302,13 +302,16 @@ texture = ExtResource("3_wb23t")
 hframes = 4
 
 [node name="AnimatedSprite2D" parent="Pivot" parent_id_path=PackedInt32Array(1561548486) index="0" unique_id=1437521787]
+unique_name_in_owner = false
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_nmuud")
-animation = &"iddle"
+animation = &"walk"
 autoplay = "iddle"
-frame = 3
-frame_progress = 0.018203206
+frame_progress = 0.0048911287
 
 [node name="CollisionShape2D" parent="." index="2" unique_id=912018559]
-position = Vector2(-1, 10)
+position = Vector2(-1, 11)
 shape = SubResource("CapsuleShape2D_e6rub")
+
+[node name="Camera2D" parent="." index="3" unique_id=1029679497]
+zoom = Vector2(3, 3)

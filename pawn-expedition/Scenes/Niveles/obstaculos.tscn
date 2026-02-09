@@ -15,3 +15,5 @@ texture = SubResource("AtlasTexture_qeoak")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2118847554]
 shape = SubResource("RectangleShape2D_1rpld")
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="." unique_id=918701836]

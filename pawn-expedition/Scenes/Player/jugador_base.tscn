@@ -15,5 +15,3 @@ unique_name_in_owner = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=912018559]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1029679497]
-
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1388986084]
