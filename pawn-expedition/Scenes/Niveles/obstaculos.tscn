@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bxu57e1fssmxy"]
+
+[ext_resource type="Texture2D" uid="uid://dvojhpn3higfi" path="res://SpritesRogue/tileset.png" id="1_1rpld"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qeoak"]
+atlas = ExtResource("1_1rpld")
+region = Rect2(290.9305, 168.01425, 25.069489, 60.772217)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1rpld"]
+
+[node name="Obstaculos" type="StaticBody2D" unique_id=800388152]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=300182337]
+texture = SubResource("AtlasTexture_qeoak")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2118847554]
+shape = SubResource("RectangleShape2D_1rpld")

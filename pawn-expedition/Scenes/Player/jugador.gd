@@ -2,9 +2,9 @@ extends CharacterBody2D
 
 class_name Jugador
 @export var stats: DataPiezas
-
-@onready var pivot: Node2D = $Pivot
-@onready var animated_sprite_2d: AnimatedSprite2D = %AnimatedSprite2D
+@export var move_speed := 200
+@onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
+@onready var sprite: AnimatedSprite2D = %AnimatedSprite2D
 
 var can_move := true
 var movement: Vector2
