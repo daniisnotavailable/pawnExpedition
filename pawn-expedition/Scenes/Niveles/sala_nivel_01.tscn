@@ -46,6 +46,7 @@
 [ext_resource type="Texture2D" uid="uid://bgxbuurkemv5q" path="res://Sprites/Chess/Chess World tiles/corners/grass corner 3.png" id="41_u2cbu"]
 [ext_resource type="Texture2D" uid="uid://dv1apst5qo7o4" path="res://Sprites/Chess/Chess World tiles/corners/grass corner 4.png" id="42_0oedg"]
 [ext_resource type="Texture2D" uid="uid://b8xicski3t8g8" path="res://Sprites/Chess/Chess World tiles/corners/grass corner 5.png" id="43_3iamy"]
+[ext_resource type="PackedScene" uid="uid://b1rsxovud3wdr" path="res://Scenes/UI/trampa.tscn" id="47_35ats"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_km3or"]
 texture = ExtResource("2_dyjtf")
@@ -822,3 +823,17 @@ tile_map_data = PackedByteArray("AAD1//n/AQAFAAEAAAD1//r/AQAFAAIAAAD1//v/AQAFAAM
 tile_set = ExtResource("1_wlr3o")
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=1084008260]
+
+[node name="HUDTemporal" type="CanvasLayer" parent="." unique_id=154872577]
+
+[node name="BarraVida" type="ProgressBar" parent="HUDTemporal" unique_id=755341191]
+offset_right = 56.0
+offset_bottom = 27.0
+
+[node name="DatosEtiqueta" type="Label" parent="HUDTemporal" unique_id=297281025]
+offset_top = 33.0
+offset_right = 56.0
+offset_bottom = 56.0
+
+[node name="Trampa" parent="." unique_id=1363347172 instance=ExtResource("47_35ats")]
+position = Vector2(97, 106)

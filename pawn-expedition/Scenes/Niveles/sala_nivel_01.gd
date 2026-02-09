@@ -3,13 +3,24 @@ extends Node2D
 @export var obstaculo_scene: PackedScene
 @export var player_scene: PackedScene
 
-@export var spawn_area_min: Vector2 = Vector2(-200, -200)
-@export var spawn_area_max: Vector2 = Vector2(200, 200)
+@export var spawn_area_min: Vector2 = Vector2(-150, -150)
+@export var spawn_area_max: Vector2 = Vector2(150, 150)
 @export var spawn_player_pos: Vector2 = Vector2(0, 0)
+
+@onready var barra_vida: ProgressBar = $HUDTemporal/BarraVida
+@onready var etiqueta: Label = $HUDTemporal/DatosEtiqueta
 
 func _ready() -> void:
 	spawn_obstaculos()
 	spawn_players()
+	
+func _process(_delta: float) -> void:
+	if barra_vida:
+		barra_vida.max_value = 100
+		barra_vida.value = GameGlobal.player_hp
+	
+	if etiqueta:
+		etiqueta.text = "Nivel: %d | Oro: %d" % [GameGlobal.current_level, GameGlobal.player_gold]
 	
 func spawn_obstaculos() -> void:
 	if not obstaculo_scene: return

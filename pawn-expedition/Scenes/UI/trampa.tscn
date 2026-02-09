@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://b1rsxovud3wdr"]
+
+[ext_resource type="Texture2D" uid="uid://dcrxwpw5k31mh" path="res://SpritesRogue/trap01.png" id="1_5lerc"]
+[ext_resource type="Script" uid="uid://culhv5oitcuvm" path="res://Scenes/UI/trampa.gd" id="1_mxfdl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mxfdl"]
+atlas = ExtResource("1_5lerc")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6gt02"]
+atlas = ExtResource("1_5lerc")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vbvku"]
+atlas = ExtResource("1_5lerc")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y0v8l"]
+atlas = ExtResource("1_5lerc")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i0ys2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mxfdl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6gt02")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vbvku")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y0v8l")
+}],
+"loop": true,
+"name": &"trap",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4uax2"]
+
+[node name="Trampa" type="Area2D" unique_id=1363347172]
+script = ExtResource("1_mxfdl")
+
+[node name="TrampaAnimada" type="AnimatedSprite2D" parent="." unique_id=236102962]
+sprite_frames = SubResource("SpriteFrames_i0ys2")
+animation = &"trap"
+autoplay = "trap"
+frame_progress = 0.28027907
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1782087840]
+shape = SubResource("CircleShape2D_4uax2")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
