@@ -1,7 +1,10 @@
 [gd_scene format=4 uid="uid://swosv5sib4rl"]
 
 [ext_resource type="TileSet" uid="uid://bhu6cd4rdedef" path="res://Extras/juego_tileset.tres" id="1_wlr3o"]
+[ext_resource type="Script" uid="uid://c1it5vaxnikqm" path="res://Scenes/Niveles/sala_nivel_01.gd" id="1_woxtc"]
 [ext_resource type="Texture2D" uid="uid://dvojhpn3higfi" path="res://SpritesRogue/tileset.png" id="2_dyjtf"]
+[ext_resource type="PackedScene" uid="uid://bxu57e1fssmxy" path="res://Scenes/Niveles/obstaculos.tscn" id="2_sf4xs"]
+[ext_resource type="PackedScene" uid="uid://bmj7hjuk2udnl" path="res://Scenes/Player/jugador_peon.tscn" id="3_35ats"]
 [ext_resource type="Texture2D" uid="uid://b7eg65nh448q7" path="res://Sprites/Chess/Chess World tiles/corners/checker corner 1.png" id="3_woxtc"]
 [ext_resource type="Texture2D" uid="uid://ccbocvaq52808" path="res://Sprites/Chess/Chess World tiles/corners/grass corner 6.png" id="4_ccknw"]
 [ext_resource type="Texture2D" uid="uid://cmjbbwasd38qk" path="res://Sprites/Chess/Chess World tiles/corners/grass corner 7.png" id="5_sf4xs"]
@@ -719,7 +722,22 @@ sources/39 = SubResource("TileSetAtlasSource_8li73")
 sources/40 = SubResource("TileSetAtlasSource_kut47")
 sources/41 = SubResource("TileSetAtlasSource_3hq2v")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dyjtf"]
+size = Vector2(67, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_woxtc"]
+size = Vector2(68.5, 29.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ccknw"]
+size = Vector2(17, 88)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sf4xs"]
+size = Vector2(12, 91)
+
 [node name="Sala_Nivel_01" type="Node2D" unique_id=1394267691]
+script = ExtResource("1_woxtc")
+obstaculo_scene = ExtResource("2_sf4xs")
+player_scene = ExtResource("3_35ats")
 
 [node name="Suelo" type="TileMapLayer" parent="." unique_id=1978290910]
 texture_filter = 1
@@ -742,24 +760,50 @@ texture_filter = 1
 tile_map_data = PackedByteArray("AAD+//T/AwAAAAEAAAD///T/AwABAAEAAAAAAPT/AwAAAAEAAAABAPT/AwABAAEAAAAAAPP/AwAAAAAAAAABAPP/AwABAAAAAAD+//P/AwAAAAAAAAD///P/AwABAAAAAAA=")
 tile_set = ExtResource("1_wlr3o")
 
+[node name="Area2D" type="Area2D" parent="Puertas/Puerta_Arriba" unique_id=1769223716]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Puertas/Puerta_Arriba/Area2D" unique_id=2115694700]
+position = Vector2(0, -181)
+shape = SubResource("RectangleShape2D_dyjtf")
+
 [node name="Puerta_Abajo" type="TileMapLayer" parent="Puertas" unique_id=410066526]
 texture_filter = 1
 tile_map_data = PackedByteArray("AAD+/wwAAwAAAAEAAAD+/wsAAwAAAAAAAAD//wwAAwABAAEAAAD//wsAAwABAAAAAAAAAAwAAwAAAAEAAAAAAAsAAwAAAAAAAAABAAwAAwABAAEAAAABAAsAAwABAAAAAAD0/wIABAAGAAcAAAD1/wIABAAHAAcAAAA=")
 tile_set = ExtResource("1_wlr3o")
+
+[node name="Area2D" type="Area2D" parent="Puertas/Puerta_Abajo" unique_id=1294656555]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Puertas/Puerta_Abajo/Area2D" unique_id=385344636]
+position = Vector2(-0.25, 182.25)
+shape = SubResource("RectangleShape2D_woxtc")
 
 [node name="Puerta_Derecha" type="TileMapLayer" parent="Puertas" unique_id=1272477854]
 texture_filter = 1
 tile_map_data = PackedByteArray("AAAKAPz/BAAHAAAAAAAKAP3/BAAHAAEAAAAKAP7/BAAHAAEAAAAKAP//BAAHAAEAAAAKAAAABAAHAAIAAAAKAAEABAAHAAMAAAA=")
 tile_set = ExtResource("1_wlr3o")
 
+[node name="Area2D" type="Area2D" parent="Puertas/Puerta_Derecha" unique_id=517440306]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Puertas/Puerta_Derecha/Area2D" unique_id=877775130]
+position = Vector2(167, -11)
+shape = SubResource("RectangleShape2D_ccknw")
+
 [node name="Puerta_Izquierda" type="TileMapLayer" parent="Puertas" unique_id=1736931803]
 texture_filter = 1
 tile_map_data = PackedByteArray("AAD0/wIABAAGAAcAAAD1/wIABAAHAAcAAAD0//z/BAAHAAAAAAD0//3/BAAHAAEAAAD0//7/BAAHAAEAAAD0////BAAHAAEAAAD0/wAABAAHAAIAAAD0/wEABAAHAAMAAAA=")
 tile_set = ExtResource("1_wlr3o")
 
+[node name="Area2D" type="Area2D" parent="Puertas/Puerta_Izquierda" unique_id=410136398]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Puertas/Puerta_Izquierda/Area2D" unique_id=1975559675]
+position = Vector2(-177, -12)
+shape = SubResource("RectangleShape2D_sf4xs")
+
 [node name="NoPuertas" type="Node2D" parent="." unique_id=1965920319]
+visible = false
 
 [node name="NoPuerta_Arriba" type="TileMapLayer" parent="NoPuertas" unique_id=1774373611]
+visible = false
 tile_map_data = PackedByteArray("AAD7//T/AQABAAUAAAD8//T/AQACAAUAAAD9//T/AQADAAUAAAD+//T/AQAEAAUAAAD///T/AQABAAUAAAAAAPT/AQACAAUAAAABAPT/AQABAAUAAAACAPT/AQACAAUAAAADAPT/AQADAAUAAAAEAPT/AQAEAAUAAAD7//P/AQABAAQAAAD8//P/AQACAAQAAAD9//P/AQADAAQAAAD+//P/AQAEAAQAAAD///P/AQABAAQAAAAAAPP/AQACAAQAAAABAPP/AQABAAQAAAACAPP/AQACAAQAAAADAPP/AQADAAQAAAAEAPP/AQAEAAQAAAD7//X/AQABAAYAAAD7//b/AQABAAcAAAD8//X/AQACAAYAAAD8//b/AQACAAcAAAD9//X/AQADAAYAAAD9//b/AQADAAcAAAD+//X/AQAEAAYAAAD+//b/AQAEAAcAAAD///X/AQAFAAYAAAD///b/AQAFAAcAAAAAAPX/AQABAAYAAAAAAPb/AQABAAcAAAABAPX/AQACAAYAAAABAPb/AQACAAcAAAACAPX/AQADAAYAAAACAPb/AQADAAcAAAADAPX/AQAEAAYAAAADAPb/AQAEAAcAAAAEAPX/AQAFAAYAAAAEAPb/AQAFAAcAAAA=")
 tile_set = ExtResource("1_wlr3o")
 
