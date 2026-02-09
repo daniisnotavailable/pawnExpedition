@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://16d4v5yrriqg"]
+
+[ext_resource type="Texture2D" uid="uid://c6ao0n8la8wl4" path="res://SpritesRogue/Key_animation.png" id="1_svsm6"]
+[ext_resource type="Script" uid="uid://dwnrbbdaw5345" path="res://Scenes/UI/llaves.gd" id="1_w74yj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w74yj"]
+atlas = ExtResource("1_svsm6")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mt1vn"]
+atlas = ExtResource("1_svsm6")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ipkd"]
+atlas = ExtResource("1_svsm6")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p6p6t"]
+atlas = ExtResource("1_svsm6")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5c5jm"]
+atlas = ExtResource("1_svsm6")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aa7ai"]
+atlas = ExtResource("1_svsm6")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xlspu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w74yj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mt1vn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ipkd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p6p6t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5c5jm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aa7ai")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_svsm6"]
+radius = 7.0
+height = 14.0
+
+[node name="llaves" type="Area2D" unique_id=1780298095]
+script = ExtResource("1_w74yj")
+
+[node name="LlaveAnimada" type="AnimatedSprite2D" parent="." unique_id=1321317333]
+sprite_frames = SubResource("SpriteFrames_xlspu")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2004205801]
+position = Vector2(1, 7)
+shape = SubResource("CapsuleShape2D_svsm6")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

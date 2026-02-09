@@ -47,6 +47,7 @@
 [ext_resource type="Texture2D" uid="uid://dv1apst5qo7o4" path="res://Sprites/Chess/Chess World tiles/corners/grass corner 4.png" id="42_0oedg"]
 [ext_resource type="Texture2D" uid="uid://b8xicski3t8g8" path="res://Sprites/Chess/Chess World tiles/corners/grass corner 5.png" id="43_3iamy"]
 [ext_resource type="PackedScene" uid="uid://b1rsxovud3wdr" path="res://Scenes/UI/trampa.tscn" id="47_35ats"]
+[ext_resource type="PackedScene" uid="uid://16d4v5yrriqg" path="res://Scenes/UI/llaves.tscn" id="48_fxjkb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_km3or"]
 texture = ExtResource("2_dyjtf")
@@ -740,6 +741,8 @@ size = Vector2(12, 91)
 script = ExtResource("1_woxtc")
 obstaculo_scene = ExtResource("2_sf4xs")
 player_scene = ExtResource("3_35ats")
+llave_scene = ExtResource("48_fxjkb")
+trampa_scene = ExtResource("47_35ats")
 
 [node name="Suelo" type="TileMapLayer" parent="." unique_id=1978290910]
 texture_filter = 1
@@ -834,6 +837,3 @@ offset_bottom = 27.0
 offset_top = 33.0
 offset_right = 56.0
 offset_bottom = 56.0
-
-[node name="Trampa" parent="." unique_id=1363347172 instance=ExtResource("47_35ats")]
-position = Vector2(97, 106)
