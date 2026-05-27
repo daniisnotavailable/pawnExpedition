@@ -1,13 +1,7 @@
 extends CharacterBody2D
-## Peón del jugador — movimiento top-down (Horde). Godot 4.6.
-## Mover: WASD o flechas. Atacar: Espacio.
-## La sombra y el polvo van dentro del propio sprite (capas del Aseprite),
-## por eso esta escena no lleva nodo de sombra aparte.
 
 @export var speed: float = 90.0
-
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
-
 var _attacking: bool = false
 
 func _ready() -> void:
@@ -20,7 +14,6 @@ func _physics_process(_delta: float) -> void:
 		velocity = direction * speed
 		move_and_slide()
 
-	# El sprite mira a la derecha por defecto; al ir a la izquierda lo volteamos.
 	if direction.x != 0.0:
 		sprite.flip_h = direction.x < 0.0
 
