@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://d10l5cch1b0on"]
+
+[ext_resource type="Script" uid="uid://yxxfa618t3gx" path="res://scripts/enemy.gd" id="1_5ite6"]
+[ext_resource type="SpriteFrames" uid="uid://cy0i0u1i05aig" path="res://resources/boar_frames.tres" id="2_tlhih"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6shct"]
+
+[node name="Jabali" type="CharacterBody2D" unique_id=112998046]
+script = ExtResource("1_5ite6")
+speed = 75.0
+detection_range = 110.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=845178087]
+texture_filter = 1
+sprite_frames = ExtResource("2_tlhih")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1200109056]
+position = Vector2(1, 0)
+shape = SubResource("CircleShape2D_6shct")

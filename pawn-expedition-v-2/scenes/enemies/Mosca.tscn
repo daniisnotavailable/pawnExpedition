@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cdov0i2uw6sre"]
+
+[ext_resource type="SpriteFrames" uid="uid://opx4rqeprj30" path="res://resources/fly_frames.tres" id="1_jln4i"]
+[ext_resource type="Script" uid="uid://yxxfa618t3gx" path="res://scripts/enemy.gd" id="1_qt4g2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jln4i"]
+
+[node name="Mosca" type="CharacterBody2D" unique_id=1815460354]
+script = ExtResource("1_qt4g2")
+speed = 60.0
+detection_range = 160.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=279721239]
+texture_filter = 1
+sprite_frames = ExtResource("1_jln4i")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=301854066]
+position = Vector2(0, -3)
+shape = SubResource("CircleShape2D_jln4i")
