@@ -77,6 +77,7 @@ tile_map_data = PackedByteArray("AADu//H/AAABAAAAAADu/w4AAAABAAIAAAD3//v/AQAGAAA
 tile_set = SubResource("TileSet_sjicx")
 
 [node name="Player" parent="." unique_id=7440418 instance=ExtResource("1_xnrmx")]
+invulnerability_time = 0.8
 
 [node name="Goblin" parent="." unique_id=495887290 instance=ExtResource("2_wplmo")]
 position = Vector2(112, 64)

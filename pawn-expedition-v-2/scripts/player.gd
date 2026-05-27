@@ -6,43 +6,70 @@ signal died
 @export var speed: float = 90.0
 @export var max_health: int = 100
 @export var invulnerability_time: float = 0.5
+@export var attack_damage: int = 20
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var attack_hitbox: Area2D = $AttackHitbox
 
 var _current_health: int
 var _attacking: bool = false
+var _being_hit: bool = false
 var _invulnerable: bool = false
 var _dead: bool = false
+var _damaged_this_swing: Array = []
 
 func _ready() -> void:
 	_current_health = max_health
 	sprite.animation_finished.connect(_on_animation_finished)
+	attack_hitbox.body_entered.connect(_on_hitbox_body_entered)
+	attack_hitbox.monitoring = false
 	health_changed.emit(_current_health, max_health)
 
 func _physics_process(_delta: float) -> void:
 	if _dead:
 		velocity = Vector2.ZERO
+		move_and_slide()
 		return
 
 	var direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
 
-	if not _attacking:
-		velocity = direction * speed
-		move_and_slide()
+	velocity = direction * speed
+	move_and_slide()
 
 	if direction.x != 0.0:
 		sprite.flip_h = direction.x < 0.0
 
-	if not _attacking:
+	# La animacion solo cambia si no hay atacar/hit en curso.
+	if not _attacking and not _being_hit:
 		_update_animation(direction)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if _dead:
 		return
 	if event.is_action_pressed("attack") and not _attacking:
-		_attacking = true
-		velocity = Vector2.ZERO
-		sprite.play("atacar")
+		_start_attack()
+
+func _start_attack() -> void:
+	_attacking = true
+	_being_hit = false
+	sprite.play("atacar")
+	_damaged_this_swing.clear()
+	attack_hitbox.position.x = -10.0 if sprite.flip_h else 10.0
+	attack_hitbox.monitoring = true
+	await get_tree().physics_frame
+	if not _attacking:
+		return
+	for body in attack_hitbox.get_overlapping_bodies():
+		_on_hitbox_body_entered(body)
+
+func _on_hitbox_body_entered(body: Node) -> void:
+	if body in _damaged_this_swing:
+		return
+	if body.is_in_group("player"):
+		return
+	if body.has_method("take_damage"):
+		body.take_damage(attack_damage)
+		_damaged_this_swing.append(body)
 
 func take_damage(amount: int) -> void:
 	if _dead or _invulnerable:
@@ -53,9 +80,15 @@ func take_damage(amount: int) -> void:
 
 	if _current_health == 0:
 		_die()
-	else:
-		sprite.play("hit")
-		_start_invulnerability()
+		return
+
+	if _attacking:
+		_attacking = false
+		attack_hitbox.monitoring = false
+
+	_being_hit = true
+	sprite.play("hit")
+	_start_invulnerability()
 
 func _start_invulnerability() -> void:
 	_invulnerable = true
@@ -87,3 +120,6 @@ func _update_animation(direction: Vector2) -> void:
 func _on_animation_finished() -> void:
 	if sprite.animation == "atacar":
 		_attacking = false
+		attack_hitbox.monitoring = false
+	elif sprite.animation == "hit":
+		_being_hit = false

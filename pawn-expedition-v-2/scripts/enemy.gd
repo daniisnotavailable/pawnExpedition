@@ -22,26 +22,32 @@ func _physics_process(_delta: float) -> void:
 	if _dead or _player == null:
 		return
 
-	var to_player := _player.global_position - global_position
-	var distance := to_player.length()
+	var anim_busy := (sprite.animation == "attack" or sprite.animation == "hit") and sprite.is_playing()
 
-	if distance <= detection_range:
-		velocity = to_player.normalized() * speed
-		sprite.play("move")
-		if to_player.x != 0.0:
-			sprite.flip_h = to_player.x < 0.0
-	else:
+	if anim_busy:
 		velocity = Vector2.ZERO
-		sprite.play("idle")
+	else:
+		var to_player := _player.global_position - global_position
+		var distance := to_player.length()
+
+		if distance <= detection_range:
+			velocity = to_player.normalized() * speed
+			sprite.play("move")
+			if to_player.x != 0.0:
+				sprite.flip_h = to_player.x < 0.0
+		else:
+			velocity = Vector2.ZERO
+			sprite.play("idle")
 
 	move_and_slide()
 
-	if _can_damage:
+	if _can_damage and not anim_busy:
 		for i in range(get_slide_collision_count()):
 			var collision := get_slide_collision(i)
 			var collider := collision.get_collider()
 			if collider != null and collider.is_in_group("player") and collider.has_method("take_damage"):
 				collider.take_damage(contact_damage)
+				sprite.play("attack")
 				_start_contact_cooldown()
 				break
 
