@@ -3,8 +3,9 @@
 [ext_resource type="Script" uid="uid://yxxfa618t3gx" path="res://scripts/enemy.gd" id="1_abxm6"]
 [ext_resource type="SpriteFrames" uid="uid://tj46c5qabo80" path="res://resources/goblin_frames.tres" id="2_gv1lv"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_s4grb"]
-radius = 9.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_abxm6"]
+radius = 8.0
+height = 20.0
 
 [node name="Goblin" type="CharacterBody2D" unique_id=495887290]
 script = ExtResource("1_abxm6")
@@ -15,4 +16,4 @@ sprite_frames = ExtResource("2_gv1lv")
 animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=839882213]
-shape = SubResource("CircleShape2D_s4grb")
+shape = SubResource("CapsuleShape2D_abxm6")
