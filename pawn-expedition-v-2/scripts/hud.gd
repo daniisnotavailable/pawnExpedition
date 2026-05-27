@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-@onready var health_bar: ProgressBar = $HealthBar
+@onready var health_bar: Range = $TextureProgressBar
 
 func _ready() -> void:
 	var player := get_tree().get_first_node_in_group("player")

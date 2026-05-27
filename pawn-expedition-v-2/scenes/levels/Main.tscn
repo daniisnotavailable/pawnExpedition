@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://didot6thn1qtk" path="res://sprites/tiles/garden_tileset.png" id="2_i75nk"]
 [ext_resource type="PackedScene" uid="uid://yvhlgbbe5nvv" path="res://scenes/enemies/Goblin.tscn" id="2_wplmo"]
 [ext_resource type="Texture2D" uid="uid://lrtfqdexurgf" path="res://sprites/tiles/dungeon_gate.png" id="3_lxnxd"]
+[ext_resource type="PackedScene" uid="uid://c6sv7nlax216y" path="res://scenes/ui/Hud.tscn" id="6_i75nk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qo7a2"]
 texture = ExtResource("1_ywf1f")
@@ -78,3 +79,6 @@ tile_set = SubResource("TileSet_sjicx")
 [node name="Player" parent="." unique_id=7440418 instance=ExtResource("1_xnrmx")]
 
 [node name="Goblin" parent="." unique_id=495887290 instance=ExtResource("2_wplmo")]
+position = Vector2(112, 64)
+
+[node name="HUD" parent="." unique_id=607619629 instance=ExtResource("6_i75nk")]

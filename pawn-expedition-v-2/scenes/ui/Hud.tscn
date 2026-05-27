@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://b871jnc2dcr7u" path="res://sprites/ui/hud_progress_bar_health_overlay.png" id="3_f1iev"]
 
 [node name="HUD" type="CanvasLayer" unique_id=607619629]
+scale = Vector2(4, 4)
+transform = Transform2D(4, 0, 0, 4, 0, 0)
 script = ExtResource("1_7v63g")
 
 [node name="Sprite2D" type="TextureRect" parent="." unique_id=329814369]
