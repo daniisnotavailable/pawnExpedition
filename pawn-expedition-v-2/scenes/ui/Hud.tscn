@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://c6sv7nlax216y"]
+
+[ext_resource type="Script" uid="uid://dr7t3w57b0rtr" path="res://scripts/hud.gd" id="1_7v63g"]
+[ext_resource type="Texture2D" uid="uid://drc0iirtj83yj" path="res://sprites/ui/hud_player_infos.png" id="1_emh6u"]
+[ext_resource type="Texture2D" uid="uid://b871jnc2dcr7u" path="res://sprites/ui/hud_progress_bar_health_overlay.png" id="3_f1iev"]
+
+[node name="HUD" type="CanvasLayer" unique_id=607619629]
+script = ExtResource("1_7v63g")
+
+[node name="Sprite2D" type="TextureRect" parent="." unique_id=329814369]
+texture_filter = 1
+offset_right = 128.0
+offset_bottom = 48.0
+texture = ExtResource("1_emh6u")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=29870722]
+texture_filter = 1
+offset_left = 43.0
+offset_top = 13.0
+offset_right = 113.0
+offset_bottom = 15.0
+value = 100.0
+nine_patch_stretch = true
+texture_progress = ExtResource("3_f1iev")

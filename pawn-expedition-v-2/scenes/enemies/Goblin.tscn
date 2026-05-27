@@ -10,6 +10,8 @@ height = 20.0
 [node name="Goblin" type="CharacterBody2D" unique_id=495887290]
 motion_mode = 1
 script = ExtResource("1_abxm6")
+speed = 55.0
+contact_damage = 20
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1489084046]
 texture_filter = 1

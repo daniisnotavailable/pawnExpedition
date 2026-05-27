@@ -8,8 +8,10 @@
 [node name="Mosca" type="CharacterBody2D" unique_id=1815460354]
 motion_mode = 1
 script = ExtResource("1_qt4g2")
-speed = 60.0
+speed = 70.0
 detection_range = 160.0
+max_health = 60
+contact_damage = 30
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=279721239]
 texture_filter = 1
