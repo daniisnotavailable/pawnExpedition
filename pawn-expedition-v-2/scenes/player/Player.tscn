@@ -8,6 +8,7 @@ radius = 5.0
 height = 18.0
 
 [node name="Player" type="CharacterBody2D" unique_id=7440418 groups=["player"]]
+motion_mode = 1
 script = ExtResource("1_wr5hl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=800181887]

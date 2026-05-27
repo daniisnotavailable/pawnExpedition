@@ -1,13 +1,29 @@
 extends CharacterBody2D
 
+signal health_changed(current: int, max_value: int)
+signal died
+
 @export var speed: float = 90.0
+@export var max_health: int = 100
+@export var invulnerability_time: float = 0.5
+
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+
+var _current_health: int
 var _attacking: bool = false
+var _invulnerable: bool = false
+var _dead: bool = false
 
 func _ready() -> void:
+	_current_health = max_health
 	sprite.animation_finished.connect(_on_animation_finished)
+	health_changed.emit(_current_health, max_health)
 
 func _physics_process(_delta: float) -> void:
+	if _dead:
+		velocity = Vector2.ZERO
+		return
+
 	var direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
 
 	if not _attacking:
@@ -21,10 +37,46 @@ func _physics_process(_delta: float) -> void:
 		_update_animation(direction)
 
 func _unhandled_input(event: InputEvent) -> void:
+	if _dead:
+		return
 	if event.is_action_pressed("attack") and not _attacking:
 		_attacking = true
 		velocity = Vector2.ZERO
 		sprite.play("atacar")
+
+func take_damage(amount: int) -> void:
+	if _dead or _invulnerable:
+		return
+
+	_current_health = max(_current_health - amount, 0)
+	health_changed.emit(_current_health, max_health)
+
+	if _current_health == 0:
+		_die()
+	else:
+		sprite.play("hit")
+		_start_invulnerability()
+
+func _start_invulnerability() -> void:
+	_invulnerable = true
+	_blink()
+	await get_tree().create_timer(invulnerability_time).timeout
+	_invulnerable = false
+	sprite.modulate.a = 1.0
+
+func _blink() -> void:
+	var blinks := 5
+	var step := invulnerability_time / float(blinks * 2)
+	for i in range(blinks):
+		sprite.modulate.a = 0.3
+		await get_tree().create_timer(step).timeout
+		sprite.modulate.a = 1.0
+		await get_tree().create_timer(step).timeout
+
+func _die() -> void:
+	_dead = true
+	sprite.play("muerte")
+	died.emit()
 
 func _update_animation(direction: Vector2) -> void:
 	if direction.length() > 0.0:

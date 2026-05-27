@@ -6,6 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_6shct"]
 
 [node name="Jabali" type="CharacterBody2D" unique_id=112998046]
+motion_mode = 1
 script = ExtResource("1_5ite6")
 speed = 75.0
 detection_range = 110.0

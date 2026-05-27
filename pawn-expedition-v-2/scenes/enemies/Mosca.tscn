@@ -6,6 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_jln4i"]
 
 [node name="Mosca" type="CharacterBody2D" unique_id=1815460354]
+motion_mode = 1
 script = ExtResource("1_qt4g2")
 speed = 60.0
 detection_range = 160.0
