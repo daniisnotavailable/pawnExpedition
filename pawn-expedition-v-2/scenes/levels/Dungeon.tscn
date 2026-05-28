@@ -10,7 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://d1lsvu5cfuayw" path="res://sprites/tiles/dungeon_tileset.png" id="6_8eluk"]
 [ext_resource type="Texture2D" uid="uid://didot6thn1qtk" path="res://sprites/tiles/garden_tileset.png" id="7_f0730"]
 [ext_resource type="Texture2D" uid="uid://lrtfqdexurgf" path="res://sprites/tiles/dungeon_gate.png" id="8_grfv3"]
+[ext_resource type="Texture2D" uid="uid://cvogikatwfpxt" path="res://sprites/player/BISHOP WHT-BLU.png" id="11_8eluk"]
 [ext_resource type="PackedScene" uid="uid://3ynhecexenuv" path="res://scenes/enemies/DungeonEnemy.tscn" id="11_dhxl4"]
+[ext_resource type="Texture2D" uid="uid://dk85a4hqiutjs" path="res://sprites/player/KNIGHT WHT-BLU.png" id="12_f0730"]
+[ext_resource type="Script" uid="uid://ytn1dcsw7x3y" path="res://scripts/transform_tile.gd" id="14_f0730"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2bmgx"]
 texture = ExtResource("2_m6umr")
@@ -125,7 +128,11 @@ tile_map_data = PackedByteArray("AAAAAAAAAwAAAAAAAAABAAAAAgAAAAAAAAADAAAAAgAAAAA
 tile_set = SubResource("TileSet_s721a")
 
 [node name="DungeonPlayer" type="Node2D" parent="." unique_id=639382572]
+texture_filter = 1
 script = ExtResource("2_ea83i")
+pawn_texture = ExtResource("3_7fm4t")
+bishop_texture = ExtResource("11_8eluk")
+knight_texture = ExtResource("12_f0730")
 
 [node name="Sprite2D" type="Sprite2D" parent="DungeonPlayer" unique_id=392840184]
 texture_filter = 1
@@ -138,3 +145,32 @@ zoom = Vector2(8, 8)
 
 [node name="DungeonEnemy" parent="." unique_id=917757542 instance=ExtResource("11_dhxl4")]
 position = Vector2(24, 8)
+
+[node name="Peon" type="Node2D" parent="." unique_id=1100587567]
+position = Vector2(56, 54)
+script = ExtResource("14_f0730")
+target_type = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="Peon" unique_id=385138750]
+texture_filter = 1
+texture = ExtResource("3_7fm4t")
+offset = Vector2(0, -8)
+
+[node name="Alfil" type="Node2D" parent="." unique_id=1784507812]
+position = Vector2(72, 0)
+script = ExtResource("14_f0730")
+
+[node name="Sprite2D" type="Sprite2D" parent="Alfil" unique_id=1601090254]
+texture_filter = 1
+texture = ExtResource("11_8eluk")
+offset = Vector2(0, -8)
+
+[node name="Caballo" type="Node2D" parent="." unique_id=1042240661]
+position = Vector2(24, 16)
+script = ExtResource("14_f0730")
+target_type = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Caballo" unique_id=1073217130]
+texture_filter = 1
+texture = ExtResource("12_f0730")
+offset = Vector2(0, -8)
