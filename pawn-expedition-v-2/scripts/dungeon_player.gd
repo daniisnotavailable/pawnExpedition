@@ -4,7 +4,7 @@ class_name DungeonPlayer
 signal moved(from_pos: Vector2i, to_pos: Vector2i)
 signal turn_ended
 
-@export var start_grid_pos: Vector2i = Vector2i(0, 0)
+@export var start_grid_pos: Vector2i = Vector2i(3, 6)
 
 var grid: GridManager
 var grid_pos: Vector2i
