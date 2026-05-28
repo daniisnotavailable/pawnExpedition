@@ -6,17 +6,24 @@
 [ext_resource type="PackedScene" uid="uid://yvhlgbbe5nvv" path="res://scenes/enemies/Goblin.tscn" id="2_wplmo"]
 [ext_resource type="Texture2D" uid="uid://lrtfqdexurgf" path="res://sprites/tiles/dungeon_gate.png" id="3_lxnxd"]
 [ext_resource type="PackedScene" uid="uid://c6sv7nlax216y" path="res://scenes/ui/Hud.tscn" id="6_i75nk"]
+[ext_resource type="Script" uid="uid://drtxtovyw6krr" path="res://scripts/wave_spawner.gd" id="6_lxnxd"]
+[ext_resource type="PackedScene" uid="uid://cdov0i2uw6sre" path="res://scenes/enemies/Mosca.tscn" id="8_bk7v4"]
+[ext_resource type="PackedScene" uid="uid://d10l5cch1b0on" path="res://scenes/enemies/Jabali.tscn" id="9_ku760"]
+[ext_resource type="PackedScene" uid="uid://bl78j72gbomo2" path="res://scenes/levels/DungeonGate.tscn" id="10_ku760"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qo7a2"]
 texture = ExtResource("1_ywf1f")
 0:0/0 = 0
 1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 8, 8, 8, -8)
 2:0/0 = 0
 3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 8, 8, 8, -8)
 4:0/0 = 0
 5:0/0 = 0
 6:0/0 = 0
 0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 8, 8, 8, -8)
 1:1/0 = 0
 2:1/0 = 0
 3:1/0 = 0
@@ -25,12 +32,15 @@ texture = ExtResource("1_ywf1f")
 6:1/0 = 0
 0:2/0 = 0
 1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 8, 8, 8, -8)
 2:2/0 = 0
 3:2/0 = 0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 8, 8, 8, -8)
 4:2/0 = 0
 0:3/0 = 0
 1:3/0 = 0
 2:3/0 = 0
+2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 8, 8, 8, -8)
 3:3/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bk7v4"]
@@ -65,6 +75,7 @@ texture = ExtResource("2_i75nk")
 texture = ExtResource("3_lxnxd")
 
 [sub_resource type="TileSet" id="TileSet_sjicx"]
+physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_qo7a2")
 sources/1 = SubResource("TileSetAtlasSource_bk7v4")
 sources/3 = SubResource("TileSetAtlasSource_ku760")
@@ -79,7 +90,15 @@ tile_set = SubResource("TileSet_sjicx")
 [node name="Player" parent="." unique_id=7440418 instance=ExtResource("1_xnrmx")]
 invulnerability_time = 0.8
 
-[node name="Goblin" parent="." unique_id=495887290 instance=ExtResource("2_wplmo")]
-position = Vector2(112, 64)
+[node name="WaveSpawner" type="Node" parent="." unique_id=719872892]
+script = ExtResource("6_lxnxd")
+goblin_scene = ExtResource("2_wplmo")
+fly_scene = ExtResource("8_bk7v4")
+boar_scene = ExtResource("9_ku760")
+spawn_radius_min = 50.0
+spawn_radius_max = 200.0
 
 [node name="HUD" parent="." unique_id=607619629 instance=ExtResource("6_i75nk")]
+
+[node name="DungeonGate" parent="." unique_id=1087654966 instance=ExtResource("10_ku760")]
+position = Vector2(16, -240)

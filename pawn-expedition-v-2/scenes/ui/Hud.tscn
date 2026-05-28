@@ -4,6 +4,33 @@
 [ext_resource type="Texture2D" uid="uid://drc0iirtj83yj" path="res://sprites/ui/hud_player_infos.png" id="1_emh6u"]
 [ext_resource type="Texture2D" uid="uid://b871jnc2dcr7u" path="res://sprites/ui/hud_progress_bar_health_overlay.png" id="3_f1iev"]
 
+[sub_resource type="FontFile" id="FontFile_jb0ce"]
+cache/0/variation_coordinates = {}
+cache/0/face_index = 0
+cache/0/embolden = 0.0
+cache/0/transform = Transform2D(1, 0, 0, 1, 0, 0)
+cache/0/spacing_top = 0
+cache/0/spacing_bottom = 0
+cache/0/spacing_space = 0
+cache/0/spacing_glyph = 0
+cache/0/baseline_offset = 0.0
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/32/0/ascent = 0.0
+cache/0/32/0/descent = 0.0
+cache/0/32/0/underline_position = 0.0
+cache/0/32/0/underline_thickness = 0.0
+cache/0/32/0/scale = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_ipyef"]
+font = SubResource("FontFile_jb0ce")
+font_size = 32
+outline_size = 2
+outline_color = Color(0.007843138, 0.015686275, 0, 1)
+
 [node name="HUD" type="CanvasLayer" unique_id=607619629]
 scale = Vector2(4, 4)
 transform = Transform2D(4, 0, 0, 4, 0, 0)
@@ -24,3 +51,15 @@ offset_bottom = 15.0
 value = 100.0
 nine_patch_stretch = true
 texture_progress = ExtResource("3_f1iev")
+
+[node name="WaveLabel" type="Label" parent="." unique_id=1530361058]
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 10.0
+offset_bottom = 55.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+label_settings = SubResource("LabelSettings_ipyef")
+horizontal_alignment = 1

@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bl78j72gbomo2"]
+
+[ext_resource type="Script" uid="uid://b0252wt5s1nuj" path="res://scripts/dungeon_gate.gd" id="1_dgox7"]
+[ext_resource type="SpriteFrames" uid="uid://d3duw354pcrjn" path="res://resources/dungeon_gate_frames.tres" id="2_d8xmo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dgox7"]
+size = Vector2(24.625, 18)
+
+[node name="DungeonGate" type="Node2D" unique_id=1087654966]
+script = ExtResource("1_dgox7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=955303886]
+texture_filter = 1
+sprite_frames = ExtResource("2_d8xmo")
+animation = &"cerrada"
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1682815271]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=423112078]
+position = Vector2(-0.6875, 7)
+shape = SubResource("RectangleShape2D_dgox7")

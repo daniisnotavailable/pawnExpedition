@@ -12,6 +12,7 @@ motion_mode = 1
 script = ExtResource("1_abxm6")
 speed = 55.0
 contact_damage = 20
+contact_cooldown = 1.5
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1489084046]
 texture_filter = 1

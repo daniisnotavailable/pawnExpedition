@@ -12,6 +12,7 @@ speed = 95.0
 detection_range = 110.0
 max_health = 120
 contact_damage = 15
+contact_cooldown = 2.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=845178087]
 texture_filter = 1

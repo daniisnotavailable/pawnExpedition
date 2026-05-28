@@ -32,14 +32,16 @@ func _physics_process(_delta: float) -> void:
 		return
 
 	var direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
-
 	velocity = direction * speed
 	move_and_slide()
 
 	if direction.x != 0.0:
 		sprite.flip_h = direction.x < 0.0
 
-	# La animacion solo cambia si no hay atacar/hit en curso.
+	if _attacking and attack_hitbox.monitoring:
+		for body in attack_hitbox.get_overlapping_bodies():
+			_try_damage_body(body)
+
 	if not _attacking and not _being_hit:
 		_update_animation(direction)
 
@@ -56,13 +58,11 @@ func _start_attack() -> void:
 	_damaged_this_swing.clear()
 	attack_hitbox.position.x = -10.0 if sprite.flip_h else 10.0
 	attack_hitbox.monitoring = true
-	await get_tree().physics_frame
-	if not _attacking:
-		return
-	for body in attack_hitbox.get_overlapping_bodies():
-		_on_hitbox_body_entered(body)
 
 func _on_hitbox_body_entered(body: Node) -> void:
+	_try_damage_body(body)
+
+func _try_damage_body(body: Node) -> void:
 	if body in _damaged_this_swing:
 		return
 	if body.is_in_group("player"):
