@@ -51,6 +51,7 @@ func execute_move() -> void:
 	_hide_telegraph()
 
 func capture() -> void:
+	remove_from_group("dungeon_enemy")
 	grid.unregister(grid_pos)
 	if _telegraph != null:
 		_telegraph.queue_free()
