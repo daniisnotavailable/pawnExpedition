@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://3ynhecexenuv"]
+
+[ext_resource type="Script" uid="uid://ciy85vukr1u35" path="res://scripts/dungeon_enemy.gd" id="1_s7dyp"]
+[ext_resource type="Texture2D" uid="uid://b6nv3m62mbe7j" path="res://sprites/player/BISHOP BLK-RED.png" id="2_l1xhs"]
+[ext_resource type="Script" uid="uid://b6rexwinicc4" path="res://scripts/turn_manager.gd" id="2_lmroe"]
+
+[node name="DungeonEnemy" type="Node2D" unique_id=917757542]
+script = ExtResource("1_s7dyp")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2044196767]
+texture_filter = 1
+texture = ExtResource("2_l1xhs")
+offset = Vector2(0, -8)
+
+[node name="TurnManager" type="Node" parent="." unique_id=190608079]
+script = ExtResource("2_lmroe")

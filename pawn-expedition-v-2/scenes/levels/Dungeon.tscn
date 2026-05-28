@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://d1lsvu5cfuayw" path="res://sprites/tiles/dungeon_tileset.png" id="6_8eluk"]
 [ext_resource type="Texture2D" uid="uid://didot6thn1qtk" path="res://sprites/tiles/garden_tileset.png" id="7_f0730"]
 [ext_resource type="Texture2D" uid="uid://lrtfqdexurgf" path="res://sprites/tiles/dungeon_gate.png" id="8_grfv3"]
+[ext_resource type="PackedScene" uid="uid://3ynhecexenuv" path="res://scenes/enemies/DungeonEnemy.tscn" id="11_dhxl4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2bmgx"]
 texture = ExtResource("2_m6umr")
@@ -125,12 +126,15 @@ tile_set = SubResource("TileSet_s721a")
 
 [node name="DungeonPlayer" type="Node2D" parent="." unique_id=639382572]
 script = ExtResource("2_ea83i")
-start_grid_pos = Vector2i(3, 5)
 
 [node name="Sprite2D" type="Sprite2D" parent="DungeonPlayer" unique_id=392840184]
 texture_filter = 1
+position = Vector2(0, -2)
 texture = ExtResource("3_7fm4t")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1601337050]
 position = Vector2(48, 48)
 zoom = Vector2(8, 8)
+
+[node name="DungeonEnemy" parent="." unique_id=917757542 instance=ExtResource("11_dhxl4")]
+position = Vector2(24, 8)
