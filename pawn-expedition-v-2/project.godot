@@ -15,9 +15,18 @@ run/main_scene="uid://cpawnplayer01"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+SceneTransition="*uid://cgiaug5rs2jft"
+
+[editor]
+
+version_control/autoload_on_startup=true
+
 [global_group]
 
 player=""
+spawner=""
 
 [input]
 

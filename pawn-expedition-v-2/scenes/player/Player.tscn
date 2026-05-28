@@ -8,11 +8,13 @@ radius = 5.0
 height = 18.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gfjak"]
-size = Vector2(22, 38)
+size = Vector2(20, 38)
 
 [node name="Player" type="CharacterBody2D" unique_id=7440418 groups=["player"]]
 motion_mode = 1
 script = ExtResource("1_wr5hl")
+max_health = 20000
+attack_damage = 50
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=800181887]
 texture_filter = 1
@@ -24,10 +26,15 @@ position = Vector2(-3, 1)
 shape = SubResource("CapsuleShape2D_4kuee")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1908865197]
-zoom = Vector2(4, 4)
+zoom = Vector2(8, 8)
+limit_left = -288
+limit_top = -240
+limit_right = 288
+limit_bottom = 240
+limit_smoothed = true
 
 [node name="AttackHitbox" type="Area2D" parent="." unique_id=635329929]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitbox" unique_id=1575528476 groups=["player"]]
-position = Vector2(8, 0)
+position = Vector2(7, 0)
 shape = SubResource("RectangleShape2D_gfjak")

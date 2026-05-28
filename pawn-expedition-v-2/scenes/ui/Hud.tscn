@@ -32,8 +32,8 @@ outline_size = 2
 outline_color = Color(0.007843138, 0.015686275, 0, 1)
 
 [node name="HUD" type="CanvasLayer" unique_id=607619629]
-scale = Vector2(4, 4)
-transform = Transform2D(4, 0, 0, 4, 0, 0)
+scale = Vector2(8, 8)
+transform = Transform2D(8, 0, 0, 8, 0, 0)
 script = ExtResource("1_7v63g")
 
 [node name="Sprite2D" type="TextureRect" parent="." unique_id=329814369]
